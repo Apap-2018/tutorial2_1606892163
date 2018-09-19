@@ -32,4 +32,32 @@ public class PageController {
 		}
 		return "challenge";
 	}
+	
+	@RequestMapping("/generator")
+	public String generator(@RequestParam(value = "a") String jmlM, @RequestParam(value = "b") String jmlHm, Model model) {
+		String hm = "hm";
+		
+		if (jmlM.equals("0") || jmlM.equals("1")) {
+		}
+		else {
+			for (int i = 1; i < Integer.parseInt(jmlM); i++) {
+				hm += "m";
+			}
+		}
+		
+		if (jmlHm.equals("0") || jmlHm.equals("1")) {
+			
+		}
+		else {
+			String hmNew = hm;
+			for (int i = 1; i < Integer.parseInt(jmlHm); i++) {
+				hm += " " + hmNew;
+			}
+		}
+		model.addAttribute("jmlM", jmlM);
+		model.addAttribute("jmlHm", jmlHm);
+		model.addAttribute("hm", hm);
+		return "generator";
+	}
+	
 }
